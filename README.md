@@ -1,5 +1,3 @@
-# rosie-community alpha 0.0.2
-
 ### Install
 
 Docker hub - https://hub.docker.com/r/iblisslabs/rosie-community/
