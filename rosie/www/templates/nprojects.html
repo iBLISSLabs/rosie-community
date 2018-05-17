@@ -1,0 +1,30 @@
+{% extends "template.html" %}
+
+{% block title %}New Projects{% endblock %}
+
+{% block page_content %}
+
+<div class="page-header">
+    <h4>Create a new project</h4>
+</div>
+
+<form action="" method=post enctype=multipart/form-data>
+	<fieldset class="form-group">
+
+		<label for="exampleInputEmail1">Project name:</label>
+		<input type="text" class="form-control" id="exampleInputEmail1" name="name" placeholder="Nome"><br>
+		<label for="exampleInputEmail1">Import CSV:</label>
+		<input class="btn btn-default btn-xs" name=file type="file"><p>
+		<p>
+		<input class="btn btn-default" type=submit value="Upload"><p>
+      <div class="alert alert-warning" role="alert">Only '.txt' files to CSV projects!<p>
+Example:<br>
+ID_EVIDENCE,ID_GROUP,IP,PORT,PROTOCOL<br>
+0001,-00001,127.0.0.1,22,tcp<br>
+0002,-00002,127.0.0.1,23,udp<br>
+0003,-00003,127.0.0.1,80,tcp<br>
+    </div><p>
+	</fieldset>
+</form>
+
+{% endblock %}

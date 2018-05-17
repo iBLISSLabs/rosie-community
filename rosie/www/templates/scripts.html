@@ -1,0 +1,72 @@
+{% extends "template.html" %}
+
+{% block title %}Scripts{% endblock %}
+
+{% block page_content %}
+
+<div class="page-header">
+    <h4>Scripts Editor</h4>
+</div>
+
+In this tab you can consult vulnerabilities ID_GROUP, register a new ID or remove one.<p><p>
+
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#home">Search</a></li>
+    <li><a data-toggle="tab" href="#menu1">Remove</a></li>
+    <li><a data-toggle="tab" href="#menu2">Add</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+      <h3>Search script</h3>
+      <form action="" method=post enctype=multipart/form-data>
+      	<fieldset class="form-group">
+      		<label for="number">GROUP_ID:</label><p>
+      		<input type="number" class="col-2 col-form-label" name="IDGRUPO" placeholder="Nome" value="-10000"><p>
+      		<input class="btn btn-default" type=submit value="Search"><p>
+      	</fieldset>
+      </form>
+    </div>
+
+    <div id="menu1" class="tab-pane fade">
+      <h3>Remove script</h3>
+      <form action="" method=post enctype=multipart/form-data>
+      	<fieldset class="form-group">
+      		<label for="exampleInputEmail1">GROUP_ID:</label><p>
+      		<input type="number" class="col-2 col-form-label" name="REMOVE" placeholder="Nome" value="-10000"><p>
+      		<input class="btn btn-default" type=submit value="Remove"><p>
+      	</fieldset>
+      </form>
+    </div>
+
+    <div id="menu2" class="tab-pane fade">
+      <h3>Add script</h3>
+      <form action="" method=post enctype=multipart/form-data>
+      	<fieldset class="form-group">
+      		<label for="exampleInputEmail1">GROUP_ID:</label><p>
+      		<input type="number" class="form-control" name="ID" placeholder="Nome" value="-10000"><p>
+          <input type="text" class="form-control" name="Tool" placeholder="Nome" value="nmap" disabled><p>
+          <input type="text" class="form-control" name="Payload" placeholder="Nome" value="-sC -sV"><p>
+          <input type="text" class="form-control" name="Regex" placeholder="Nome" value="| grep -E 'Nmap|open'"><p>
+      		<input class="btn btn-default" type=submit value="Add"><p>
+      	</fieldset>
+      </form>
+    </div>
+  </div>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <div class="alert alert-success" role="alert">
+        {{ message }}
+      </div>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+
+
+
+{% endblock %}

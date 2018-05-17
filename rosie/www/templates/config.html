@@ -1,0 +1,151 @@
+{% extends "template.html" %}
+
+{% block title %}Configurações{% endblock %}
+
+{% block page_content %}
+
+<div class="page-header">
+    <h4>Settings</h4>
+
+</div>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <div class="alert alert-success" role="alert">
+        {{ message }}
+      </div>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+<ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#bd">Database</a></li>
+  <li><a data-toggle="tab" href="#evidencias">Evidences</a></li>
+</ul>
+
+
+<div class="tab-content">
+  <div id="bd" class="tab-pane fade in active">
+   <h3>Databases</h3>
+   <div class="row">
+	    <div class="col-sm-6 col-md-4">
+		      <div class="thumbnail">
+			         <div class="caption">
+
+                 <table class="table table-striped">
+                   <caption>Scripts database:</caption>
+          	     <thead>
+        		     <tr>
+        			        <th scope="col">Name</th>
+        			        <th scope="col">Download</th>
+                      <th scope="col">Remove</th>
+        		     </tr>
+        	      </thead>
+        	       {% for item in itens %}
+        	       <TR>
+        	         <TD class="c1"> {{item}} </TD>
+        	         <TD class="c2">
+                     <center>
+        		          <form action="" method=post enctype=multipart/from-data>
+        		              <button type="submit" class="btn btn-default btn-xs" name="download" value={{item}}>
+        			                 <span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span>
+        		              </button>
+        		          </form>
+                    </center>
+        	         </TD>
+                   <TD class="c3">
+                     <center>
+                       <form action="" method=post enctype=multipart/from-data>
+         		              <button type="submit" class="btn btn-default btn-xs" name="dell" value={{item}}>
+         			             <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
+         		              </button>
+         		           </form>
+                     </center>
+         	         </TD>
+        	        </TR>
+        	        {% endfor %}
+                </table>
+			         </div>
+		   </div>
+	    </div>
+
+	<div class="col-sm-6 col-md-5">
+		<div class="thumbnail">
+			<div class="caption">
+
+        <form action="" method=post enctype=multipart/form-data>
+        	<fieldset class="form-group">
+
+        		<label for="exampleInputEmail1">Import script database:</label>
+        		<input class="btn btn-default btn-xs" name=file type="file"><p>
+        		<input class="btn btn-default btn-xs" name="upload" type=submit value="Upload"><p>
+        		<div class="alert alert-warning btn-xs" role="alert">Upload only .db files!</div><p>
+        	</fieldset>
+        </form>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-sm-6 col-md-4">
+		<div class="thumbnail">
+			<div class="caption">
+
+        <table class="table table-striped">
+          <caption>Select default db_script:</caption>
+          	<thead>
+        		<tr>
+        			<th scope="col">Name</th>
+        			<th scope="col">Select</th>
+        		</tr>
+        	</thead>
+        	{% for item in itens %}
+        	<TR>
+        	   <TD class="c1"> {{item}} </TD>
+        	   <TD class="c2">
+            <center>
+        		<form action="" method=post enctype=multipart/from-data>
+        		  <button type="submit" class="btn btn-default btn-xs" name="default" value={{item}}>
+        			   <span class="	glyphicon glyphicon-ok-sign" aling=center aria-hidden="true"></span>
+        		  </button>
+        		 </form>
+           </center>
+        	   </TD>
+        	</TR>
+        	{% endfor %}
+        </table>
+			</div>
+		</div>
+	</div>
+  </div>
+</div>
+<!---------------
+Evidencias
+----------------->
+  <div id="evidencias" class="tab-pane fade">
+       <h4>Evidence settings:</h4>
+       <div class="row">
+    	    <div class="col-sm-6 col-md-4">
+    		      <div class="thumbnail">
+    			         <div class="caption">
+                    <form action="" method=post enctype=multipart/from-data>
+                      <fieldset class="form-group">
+                        <h5>Background:</h5><p>
+                          <input type="color" name="background" value="#000000"><p>
+                        </select>
+                        <h5>Font color:</h5><p>
+                        <input type="color" name="font" value="#ff0000"><p>
+                        <h5>Resolution:</h5><p>
+                          <input type="number" name="height" min="100" max="1024" value='480' required><br>
+                          <input type="number" name="width" min="100" max="800" value='300' required><p>
+                        <input class="btn btn-default btn-xs" name="aplicar" type=submit value="Apply"><p><p>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+  </div>
+{% endblock %}
