@@ -6,7 +6,7 @@ docker pull iblisslabs/rosie-community
 
 ### Using
 
-docker run --rm -it -v $(pwd)/evidencias:/rosie/www/evidencias -p 80:80 rosie-community /bin/bash
+docker run --rm -it -v $(pwd)/evidencias:/rosie/www/evidencias -p 80:80 iblisslabs/rosie-community /bin/bash
 
 ### Creating new project (Video)
 
